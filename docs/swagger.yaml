@@ -1,0 +1,79 @@
+basePath: v1
+definitions:
+  Services.Models:
+    properties:
+      desc:
+        type: string
+      epidermis_color:
+        type: string
+      group_id:
+        type: integer
+      model_classification:
+        type: string
+      model_type:
+        type: string
+      model_url:
+        type: string
+      mtl_url:
+        type: string
+      name:
+        type: string
+      picture_url:
+        type: string
+      scene_id:
+        type: integer
+      structure_data:
+        type: string
+    type: object
+  Services.response:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+      msg:
+        type: string
+    type: object
+host: localhost:8088
+info:
+  contact:
+    email: 790227542@qq.com
+    name: www.topgoer.com
+    url: https://www.topgoer.com
+  description: This is a sample server celler server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: https://www.topgoer.com
+  title: Three.js 项目API
+  version: "1.0"
+paths:
+  /createmodel:
+    post:
+      consumes:
+      - application/json
+      description: 新建3D模型接口
+      parameters:
+      - description: Bearer 用户令牌
+        in: header
+        name: Authorization
+        type: string
+      - description: 3D模型结构体
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/Services.Models'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/Services.response'
+      security:
+      - ApiKeyAuth: []
+      summary: 新建3D模型接口
+      tags:
+      - 模型相关接口
+swagger: "2.0"

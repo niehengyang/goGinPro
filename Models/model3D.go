@@ -63,9 +63,9 @@ func SaveModels(sceneId int, newModels []SceneToModel) bool {
 	return true
 }
 
-func GetSceneModels() []SceneToModel {
+func GetSceneModels(sceneId int) []SceneToModel {
 	var models []SceneToModel
-	Mysql.DB.Find(&models)
+	Mysql.DB.Where("scene_id = ?", sceneId).Find(&models)
 
 	return models
 }
